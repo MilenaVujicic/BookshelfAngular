@@ -1,1 +1,7 @@
-<p>default-page works!</p>
+<div class = "container" *ngIf="!_router.url.includes('user')">
+<app-nav-bar></app-nav-bar>
+</div>
+
+<div class = "container" hidden = "true">
+  <a href = "#" (click)="sendRequest()">Test</a>
+</div>

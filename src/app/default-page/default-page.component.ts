@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-default-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpClient, public _router:Router) { }
 
   ngOnInit(): void {
   }
 
+  sendRequest():void{
+
+  }
 }
