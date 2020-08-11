@@ -18,6 +18,15 @@ export class AuthorFormComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+    let authorID = localStorage.getItem("authorID");
+
+    if(authorID != null){
+      let url = "localhost:8000/author/" + authorID + "/";
+      this.http.get(url).subscribe(
+        (res:Author)=>{this.author = res;},
+        err=>{alert("Something went wrong"); console.log(err.message);}
+      );
+    }
   }
 
   sendAuthor():void{
