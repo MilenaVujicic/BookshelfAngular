@@ -21,20 +21,40 @@ export class AuthorFormComponent implements OnInit {
     let authorID = localStorage.getItem("authorID");
 
     if(authorID != null){
-      let url = "localhost:8000/author/" + authorID + "/";
+      let url = "http://localhost:8000/author/" + authorID + "/";
       this.http.get(url).subscribe(
-        (res:Author)=>{this.author = res;},
+        (res:Author)=>{this.author = res; console.log(this.author.name);},
         err=>{alert("Something went wrong"); console.log(err.message);}
       );
     }
   }
 
-  sendAuthor():void{
-    let url = "http://localhost:8000/author/"
-    this.http.post(url,this.author).subscribe(
-      res=>{alert("Author added");},
-      err=>{alert("Something went wrong");}
-    );
-  }
+  sendAuthor():void {
+    let authorID = localStorage.getItem("authorID");
+    if (authorID != null) {
+      let url = "http://localhost:8000/author/" + authorID + "/";
+      this.http.put(url, this.author).subscribe(
+        res => {
+          alert("Author edited");
+          localStorage.removeItem("authorID");
+          location.reload();
+        },
+        err => {
+          alert("Something went wrong");
+          console.log(err.message);
+        }
+      );
+    } else {
 
+      let url = "http://localhost:8000/author/"
+      this.http.post(url, this.author).subscribe(
+        res => {
+          alert("Author added");
+        },
+        err => {
+          alert("Something went wrong");
+        }
+      );
+    }
+  }
 }
