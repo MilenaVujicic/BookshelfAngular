@@ -29,7 +29,7 @@ export class AuthorListComponent implements OnInit {
   deleteAuthor(id):void{
     let url = "http://localhost:8000/author/" + id + "/";
     this.http.delete(url).subscribe(
-      res=>{alert("Author successfully deleted"); location.reload();},
+      res=>{alert("Author deleted"); location.reload();},
       err=>{alert("Something went wrong"); console.log(err.message);}
     )
   }

@@ -1,7 +1,4 @@
-<div class = "container" *ngIf="!_router.url.includes('user') && !_router.url.includes('author')">
+<div class = "container" *ngIf="!_router.url.includes('user') && !_router.url.includes('author') && !_router.url.includes('publisher')
+&& !_router.url.includes('book')">
 <app-nav-bar></app-nav-bar>
-</div>
-
-<div class = "container" hidden = "true">
-  <a href = "#" (click)="sendRequest()">Test</a>
 </div>

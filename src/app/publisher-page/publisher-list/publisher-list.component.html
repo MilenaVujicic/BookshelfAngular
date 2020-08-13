@@ -1,1 +1,18 @@
-<p>publisher-list works!</p>
+<div class = "container">
+  <table class="table table-striped table-responsive-md btn-table" border="1">
+    <thead>
+    <title>Publishers</title>
+    <tr>
+      <th scope = "col">Name</th>
+      <th scope="col" colspan="2">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let publisher of publishers">
+      <td>{{publisher.name}}</td>
+      <td><button class="btn-warning" (click)="editPublisher(publisher.id)">Edit</button></td>
+      <td><button class="btn-danger" (click)="deletePublisher(publisher.id)">Delete</button> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
