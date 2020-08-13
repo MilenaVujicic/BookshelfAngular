@@ -1,0 +1,11 @@
+<div class = "container" *ngIf="_route.url.includes('add')">
+  <app-user-nav></app-user-nav>
+  <br/>
+  <app-publisher-form></app-publisher-form>
+</div>
+
+<div class = "container" *ngIf="_route.url.includes('view')">
+  <app-user-nav></app-user-nav>
+  <br/>
+  <app-publisher-list></app-publisher-list>
+</div>

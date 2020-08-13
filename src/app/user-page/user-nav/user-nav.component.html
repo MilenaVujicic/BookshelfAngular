@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-info" id="defaultNav">
+  <a class="navbar-brand" href="#">
+    <i class="fa fa-book" aria-hidden="true"></i>
+    <span class="text-light"> Bookshelf</span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="bookDropdown" role="button" aria-haspopup="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Books
+      </a>
+      <div class="dropdown-menu" aria-labelledby="bookDropdown">
+        <a class="dropdown-item" routerLink="/book/add">Add Book</a>
+        <a class="dropdown-item" routerLink="/book/view">View Books</a>
+        <a class="dropdown-item" routerLink="/book/all">All Books</a>
+      </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="authorDropdown" role="button" aria-haspopup="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Authors
+        </a>
+        <div class="dropdown-menu" aria-labelledby="authorDropdown">
+          <a class="dropdown-item" routerLink="/author/add">Add Author</a>
+          <a class="dropdown-item" routerLink="/author/view">View Authors</a>
+          <a class="dropdown-item" routerLink="/author/all">All Authors</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="publisherDropdown" role="button" aria-haspopup="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Publishers
+        </a>
+        <div class="dropdown-menu" aria-labelledby="publisherDropdown">
+          <a class="dropdown-item" routerLink="/publisher/add">Add Publisher</a>
+          <a class="dropdown-item" routerLink="/publisher/view">View Publishers</a>
+          <a class="dropdown-item" routerLink="/publisher/all">All Publishers</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="shelfDropdown" role="button" aria-haspopup="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shelves
+        </a>
+        <div class="dropdown-menu" aria-labelledby="shelfDropdown">
+          <a class="dropdown-item" routerLink="/shelf/add">Add Shelf</a>
+          <a class="dropdown-item" routerLink="/shelf/view">View Shelves</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/search">Search</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/log_out">Logout</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
