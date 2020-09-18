@@ -51,7 +51,13 @@
         <a class="nav-link" href="/search">Search</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/log_out">Logout</a>
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+      </ul>
+    <ul class="navbar-nav">
+      <li class = "navbar-nav active">
+        <span flex></span>
+        <a class = "nav-link" href = "/user">{{user}}</a>
       </li>
     </ul>
 

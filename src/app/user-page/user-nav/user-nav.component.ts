@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-user-nav',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserNavComponent implements OnInit {
 
+  user:string = "";
   constructor() { }
 
   ngOnInit(): void {
+    let jwt = localStorage.getItem('jwt');
+    if(jwt != null){
+      const helper = new JwtHelperService();
+      const decoded = helper.decodeToken(jwt);
+      this.user = decoded['username'].toString();
+    }
+  }
+
+
+  logout():void{
+    localStorage.removeItem('jwt');
+    location.href="./";
   }
 
 }

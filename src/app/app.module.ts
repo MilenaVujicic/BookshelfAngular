@@ -18,6 +18,8 @@ import { PublisherPageComponent } from './publisher-page/publisher-page.componen
 import { PublisherFormComponent } from './publisher-page/publisher-form/publisher-form.component';
 import { PublisherListComponent } from './publisher-page/publisher-list/publisher-list.component';
 import {FormsModule} from "@angular/forms";
+import { LoginPageComponent } from './default-page/login-page/login-page.component';
+import { RegisterPageComponent } from './default-page/register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {FormsModule} from "@angular/forms";
     AuthorListComponent,
     PublisherPageComponent,
     PublisherFormComponent,
-    PublisherListComponent
+    PublisherListComponent,
+    LoginPageComponent,
+    RegisterPageComponent
   ],
     imports: [
         BrowserModule,
