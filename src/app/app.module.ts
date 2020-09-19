@@ -20,6 +20,10 @@ import { PublisherListComponent } from './publisher-page/publisher-list/publishe
 import {FormsModule} from "@angular/forms";
 import { LoginPageComponent } from './default-page/login-page/login-page.component';
 import { RegisterPageComponent } from './default-page/register-page/register-page.component';
+import { UserDataComponent } from './user-page/user-data/user-data.component';
+import { ShelfPageComponent } from './shelf-page/shelf-page.component';
+import { ShelfFormComponent } from './shelf-page/shelf-form/shelf-form.component';
+import { ShelfListComponent } from './shelf-page/shelf-list/shelf-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,11 @@ import { RegisterPageComponent } from './default-page/register-page/register-pag
     PublisherFormComponent,
     PublisherListComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    UserDataComponent,
+    ShelfPageComponent,
+    ShelfFormComponent,
+    ShelfListComponent
   ],
     imports: [
         BrowserModule,

@@ -1,0 +1,52 @@
+<div class="container" *ngIf="!editing">
+  <br/>
+  <table class="table table-striped table-responsive-md btn-table" border="1">
+    <thead>
+    <title>User data</title>
+    <tr>
+      <th scope = "col">Name</th>
+      <th scope = "col">Surname</th>
+      <th scope="col">Username</th>
+      <th scope = "col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr [(ngModel)]="userModel" ngDefaultControl>
+      <td>{{userModel.first_name}}</td>
+      <td>{{userModel.last_name}}</td>
+      <td>{{userModel.username}}</td>
+      <td>{{userModel.email}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <br/>
+  <button class="btn-primary" (click)="editUser()">Edit user data</button>
+</div>
+
+<div class = "container" *ngIf="editing">
+  <div class = "row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name = "userForm" #f="ngForm" (ngSubmit) = "sendNew()" novalidate>
+        <div class = "form-group">
+          <label>Name: </label>
+          <input type = "text" [(ngModel)] = "userModel.first_name" id = "gName" class = "form-control" name = "name"/>
+        </div>
+        <div class = "form-group">
+          <label>Surname: </label>
+          <input type = "text" [(ngModel)]="userModel.last_name" id = "gSurname" class = "form-control" name = "surname"/>
+        </div>
+        <div class = "form-group">
+          <label>Email: </label>
+          <input type = "email" [(ngModel)]="userModel.email" id = "gEmail" class = "form-control" name = "email"/>
+        </div>
+        <div class = "form-group">
+          <label>Username: </label>
+          <input type = "text" [(ngModel)]="userModel.username" id = "gUsername" class = "form-control" name = "username"/>
+        </div>
+        <button type = "submit" class = "btn btn-primary">Edit</button>
+      </form>
+</div>
+  </div>
+</div>
+

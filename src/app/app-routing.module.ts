@@ -45,6 +45,10 @@ const routes: Routes = [
   {
     path:'sign_in',
     component:RegisterPageComponent
+  },
+  {
+    path:'user/data',
+    component:UserPageComponent
   }
 ];
 
