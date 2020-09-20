@@ -8,6 +8,7 @@ import {BookPageComponent} from "./book-page/book-page.component";
 import {DefaultPageComponent} from "./default-page/default-page.component";
 import {LoginPageComponent} from "./default-page/login-page/login-page.component";
 import {RegisterPageComponent} from "./default-page/register-page/register-page.component";
+import {ShelfPageComponent} from "./shelf-page/shelf-page.component";
 
 const routes: Routes = [
   {
@@ -29,6 +30,14 @@ const routes: Routes = [
   {
     path:'publisher/view',
     component:PublisherPageComponent
+  },
+  {
+    path:'shelf/add',
+    component:ShelfPageComponent
+  },
+  {
+    path:'shelf/view',
+    component:ShelfPageComponent
   },
   {
     path:'book/add',

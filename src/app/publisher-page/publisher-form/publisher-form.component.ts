@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Publisher} from "../../../models/Publisher";
 import {HttpClient} from "@angular/common/http";
 import {Author} from "../../../models/Author";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-publisher-form',
@@ -19,8 +20,12 @@ export class PublisherFormComponent implements OnInit {
 
   ngOnInit(): void {
     let publisherID = localStorage.getItem("publisherID");
+    let jwt = localStorage.getItem('jwt');
+    const helper = new JwtHelperService();
+    const decoded = helper.decodeToken(jwt);
+    let u = decoded['username'].toString();
     if(publisherID != null){
-      let url = "http://localhost:8000/publisher/" + publisherID + "/";
+      let url = "http://localhost:8000/publisher/" + publisherID + "/" + u + "/";
       this.http.get(url).subscribe(
         (res:Author)=>{this.publisher = res;},
         err=>{alert("Something went wrong"); console.log(err.message);}
@@ -29,10 +34,13 @@ export class PublisherFormComponent implements OnInit {
   }
 
   sendPublisher():void{
-    let url = "http://localhost:8000/publisher/";
+    let jwt = localStorage.getItem('jwt');
+    const helper = new JwtHelperService();
+    const decoded = helper.decodeToken(jwt);
+    let u = decoded['username'].toString();
     let publisherID = localStorage.getItem("publisherID");
     if (publisherID != null) {
-      let url = "http://localhost:8000/publisher/" + publisherID + "/";
+      let url = "http://localhost:8000/publisher/" + publisherID + "/" + u + "/";
       this.http.put(url, this.publisher).subscribe(
         res => {
           alert("Publisher edited");
@@ -45,6 +53,7 @@ export class PublisherFormComponent implements OnInit {
         }
       );
     }else{
+      let url = "http://localhost:8000/publisher/" + u + "/";
       this.http.post(url, this.publisher).subscribe(
         res=>{alert("Publisher added!"); location.reload();},
         err=>{alert("Something went wrong"); console.log(err.message);}

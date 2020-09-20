@@ -20,14 +20,18 @@ export class AuthorFormComponent implements OnInit {
 
   ngOnInit(): void {
     let authorID = localStorage.getItem("authorID");
-
+    let jwt = localStorage.getItem('jwt');
+    const helper = new JwtHelperService();
+    const decoded = helper.decodeToken(jwt);
+    let u = decoded['username'].toString();
     if(authorID != null){
-      let url = "http://localhost:8000/author/" + authorID + "/";
+      let url = "http://localhost:8000/author/" + authorID + "/" + u + "/";
       this.http.get(url).subscribe(
         (res:Author)=>{this.author = res; console.log(this.author.name);},
         err=>{alert("Something went wrong"); console.log(err.message);}
       );
     }
+
   }
 
   sendAuthor():void {
@@ -55,6 +59,7 @@ export class AuthorFormComponent implements OnInit {
       this.http.post(url, this.author).subscribe(
         res => {
           alert("Author added");
+          location.reload();
         },
         err => {
           alert("Something went wrong");

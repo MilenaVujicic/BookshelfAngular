@@ -1,7 +1,12 @@
 <div class = "container" *ngIf="!_router.url.includes('user') && !_router.url.includes('author') && !_router.url.includes('publisher')
-&& !_router.url.includes('book') && !_router.url.includes('data')">
+&& !_router.url.includes('book') && !_router.url.includes('data') && !_router.url.includes('shelf') && !logged">
 <app-nav-bar></app-nav-bar>
   Welcome
+</div>
+
+<div class = "container" *ngIf="logged && !_router.url.includes('user') && !_router.url.includes('author') && !_router.url.includes('publisher')
+&& !_router.url.includes('book') && !_router.url.includes('data') && !_router.url.includes('shelf')">
+  <app-user-nav></app-user-nav>
 </div>
 
 
