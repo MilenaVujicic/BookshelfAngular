@@ -1,3 +1,7 @@
 <div class="container">
 <app-user-nav></app-user-nav>
 </div>
+
+<div class = "container" *ngIf="_route.url.includes('data')">
+<app-user-data></app-user-data>
+</div>

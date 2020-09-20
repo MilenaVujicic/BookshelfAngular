@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _route:Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('jwt') == null){
+      location.href = "./";
+    }
   }
 
 }

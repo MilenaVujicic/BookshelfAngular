@@ -48,10 +48,13 @@
         </div>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/search">Search</a>
+        <a class="nav-link" (click)="logout()">Logout</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/log_out">Logout</a>
+      </ul>
+    <ul class="navbar-nav">
+      <li class = "navbar-nav active">
+        <span flex></span>
+        <a class = "nav-link" href = "/user/data">{{user}}</a>
       </li>
     </ul>
 

@@ -9,9 +9,13 @@ import {Router} from "@angular/router";
 })
 export class DefaultPageComponent implements OnInit {
 
+  logged:boolean = false;
+
   constructor(private http:HttpClient, public _router:Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('jwt') != null)
+      this.logged = true;
   }
 
   sendRequest():void{
