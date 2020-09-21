@@ -9,6 +9,7 @@ import {DefaultPageComponent} from "./default-page/default-page.component";
 import {LoginPageComponent} from "./default-page/login-page/login-page.component";
 import {RegisterPageComponent} from "./default-page/register-page/register-page.component";
 import {ShelfPageComponent} from "./shelf-page/shelf-page.component";
+import {ReviewPageComponent} from "./review-page/review-page.component";
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path:'book/view',
     component:BookPageComponent
+  },
+  {
+    path:'review',
+    component:ReviewPageComponent
   },
   {
     path:'log_in',
