@@ -63,6 +63,10 @@ const routes: Routes = [
   {
     path:'user/data',
     component:UserPageComponent
+  },
+  {
+    path:'book/all',
+    component:BookPageComponent
   }
 ];
 

@@ -25,6 +25,7 @@ import { ShelfPageComponent } from './shelf-page/shelf-page.component';
 import { ShelfFormComponent } from './shelf-page/shelf-form/shelf-form.component';
 import { ShelfListComponent } from './shelf-page/shelf-list/shelf-list.component';
 import { ReviewPageComponent } from './review-page/review-page.component';
+import { BookLendComponent } from './book-page/book-lend/book-lend.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ReviewPageComponent } from './review-page/review-page.component';
     ShelfPageComponent,
     ShelfFormComponent,
     ShelfListComponent,
-    ReviewPageComponent
+    ReviewPageComponent,
+    BookLendComponent
   ],
     imports: [
         BrowserModule,
