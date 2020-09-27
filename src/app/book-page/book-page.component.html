@@ -9,3 +9,9 @@
   <br/>
   <app-book-list></app-book-list>
 </div>
+
+<div class = "container" *ngIf="_route.url.includes('all')">
+  <app-user-nav></app-user-nav>
+  <br/>
+  <app-book-lend></app-book-lend>
+</div>

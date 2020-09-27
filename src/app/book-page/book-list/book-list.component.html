@@ -1,1 +1,78 @@
-<p>book-list works!</p>
+<div class = "container" *ngIf="!showing && !reviewing && !_route.url.includes('all')">
+  <table class="table table-striped table-responsive-md btn-table" border="1">
+    <thead>
+    <title>Books</title>
+    <tr>
+      <th scope = "col">Title</th>
+      <th scope="col" colspan="4">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{book.title}}</td>
+      <td><button class="btn-primary" (click)="displayBook(book.id)">Display</button></td>
+      <td><button class="btn-warning" (click)="editBook(book.id)">Edit</button></td>
+      <td><button class="btn-secondary" (click)="reviewBook(book.id)">Add a Review</button></td>
+      <td><button class="btn-danger" (click)="deleteBook(book.id)">Remove</button> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container" *ngIf="showing && !reviewing && !_route.url.includes('all')">
+  <table class="table table-striped table-responsive-md btn-table" border="1">
+    <tbody>
+    <tr><th>Title</th><td>{{showBook.title}}</td></tr>
+    <tr><th>Description</th><td>{{showBook.description}}</td></tr>
+    <tr><th>Authors</th><td><p *ngFor="let author of authors">{{author.name}} {{author.surname}}<br></p></td></tr>
+    <tr><th>Publisher</th><td>{{publisher.name}}</td></tr>
+    <tr><th>Pages</th><td>{{showBook.pages}}</td></tr>
+    <tr><th>ISBN</th><td>{{showBook.isbn}}</td></tr>
+    <tr><th>Read</th><td>{{showBook.read}}</td></tr>
+    <tr><th>Lent</th><td>{{showBook.lent}}</td></tr>
+    <tr><th>Private</th><td>{{showBook.private}}</td></tr>
+    <tr><th>Cover</th><td><img src="{{cover}}"/></td></tr>
+    </tbody>
+  </table>
+  <button class = "btn-danger" (click)="hideBook()">Hide</button>
+  <button class="btn-secondary" (click)="showReviews(showBook.id)">Review</button>
+  <br/>
+  <br/>
+  <div class="container" *ngIf="showReview">
+    <table *ngFor="let r of reviews" class="table table-striped table-responsive-md btn-table" border="1">
+      <tbody>
+      <tr><th>Rating</th><td>{{r.rating}}</td></tr>
+      <tr><th>Content</th><td>{{r.content}}</td></tr>
+      </tbody>
+    </table>
+    <button class="btn-danger" (click)="hideReview()">Hide Review</button>
+  </div>
+</div>
+
+<div class = "container" *ngIf="!showing && reviewing && !_route.url.includes('all')">
+  <div class = "container">
+  <div class = "row">
+    <div class="offset-3"></div>
+    <div class="col-md-6">
+      <form name = "reviewForm" #f="ngForm" (ngSubmit) = "sendReview()" novalidate>
+        <div class="form-group col-md-8">
+          <label for="ratingSel">Rating</label>
+          <select id = "ratingSel" class="form-control" [(ngModel)]="selectedRating" name="sel">
+            <option [value]="1">1</option>
+            <option [value]="2">2</option>
+            <option [value]="3">3</option>
+            <option [value]="4">4</option>
+            <option [value]="5">5</option>
+          </select>
+        </div>
+        <div class = "form-group col-md-8">
+          <label for="contentField"  >Content</label>
+          <br/>
+          <textarea id="contentField" style="height:150px" [(ngModel)]="review.content" name="content" ></textarea>
+        </div>
+        <button type = "submit" class = "btn btn-primary" name="btn">Add</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
