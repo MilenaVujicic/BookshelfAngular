@@ -12,17 +12,15 @@ export class UserNavComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem('jwt');
-    if(jwt != null){
-      const helper = new JwtHelperService();
-      const decoded = helper.decodeToken(jwt);
-      this.user = decoded['username'].toString();
+    let username = localStorage.getItem('username');
+    if(username != null){
+      this.user = username;
     }
   }
 
 
   logout():void{
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('username');
     location.href="./";
   }
 

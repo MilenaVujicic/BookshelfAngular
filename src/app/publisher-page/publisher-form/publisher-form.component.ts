@@ -20,10 +20,7 @@ export class PublisherFormComponent implements OnInit {
 
   ngOnInit(): void {
     let publisherID = localStorage.getItem("publisherID");
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     if(publisherID != null){
       let url = "http://localhost:8000/publisher/" + publisherID + "/" + u + "/";
       this.http.get(url).subscribe(
@@ -34,10 +31,7 @@ export class PublisherFormComponent implements OnInit {
   }
 
   sendPublisher():void{
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let publisherID = localStorage.getItem("publisherID");
     if (publisherID != null) {
       let url = "http://localhost:8000/publisher/" + publisherID + "/" + u + "/";

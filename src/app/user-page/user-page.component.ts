@@ -11,7 +11,7 @@ export class UserPageComponent implements OnInit {
   constructor(public _route:Router) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('jwt') == null){
+    if(localStorage.getItem('username') == null){
       location.href = "./";
     }
   }

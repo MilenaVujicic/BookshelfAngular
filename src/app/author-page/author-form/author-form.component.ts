@@ -20,10 +20,7 @@ export class AuthorFormComponent implements OnInit {
 
   ngOnInit(): void {
     let authorID = localStorage.getItem("authorID");
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     if(authorID != null){
       let url = "http://localhost:8000/author/" + authorID + "/" + u + "/";
       this.http.get(url).subscribe(
@@ -36,10 +33,8 @@ export class AuthorFormComponent implements OnInit {
 
   sendAuthor():void {
     let authorID = localStorage.getItem("authorID");
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
+
     if (authorID != null) {
       let url = "http://localhost:8000/author/" + authorID + "/" + u + "/";
       this.http.put(url, this.author).subscribe(

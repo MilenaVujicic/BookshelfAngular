@@ -42,11 +42,7 @@ export class BookFormComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
-
+    let u = localStorage.getItem('username');
     let authorUrl = "http://localhost:8000/author/" + u + "/";
     let publisherUrl = "http://localhost:8000/publisher/" + u + "/";
     let shelfUrl = "http://localhost:8000/shelf/" + u + "/";
@@ -67,10 +63,7 @@ export class BookFormComponent implements OnInit {
   }
 
   sendBook():void{
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/book/" + u + "/" + this.selectedPublisher + "/";
 
 /*

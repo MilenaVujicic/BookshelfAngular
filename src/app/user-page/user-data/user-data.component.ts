@@ -21,10 +21,7 @@ export class UserDataComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     this.http.get("http://localhost:8000/user/" + u + "/").subscribe(
       (res:AppUser) =>{
         this.userModel = res;
@@ -38,10 +35,8 @@ export class UserDataComponent implements OnInit {
   }
 
   sendNew():void{
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
+
     this.http.put("http://localhost:8000/user/" + u + "/", this.userModel).subscribe(
       res=>{alert("User edited"); this.editing = false;}
 

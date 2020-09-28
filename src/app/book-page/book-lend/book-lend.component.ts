@@ -15,10 +15,7 @@ export class BookLendComponent implements OnInit {
   allBooks:Book[] = [];
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/books/";
     this.http.get(url).subscribe(
       (res:Book[])=>{this.allBooks=res;},
