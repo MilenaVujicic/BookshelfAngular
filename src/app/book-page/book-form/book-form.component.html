@@ -38,10 +38,6 @@
           <input [(ngModel)]="book.read" name="read" type = "checkbox" id="gStatus" class="form-control"/>
         </div>
         <div class = "form-group">
-          <label>Lent: </label>
-          <input [(ngModel)]="book.lent" name="lent" type = "checkbox" id="gLent" class="form-control"/>
-        </div>
-        <div class = "form-group">
           <label>Cover: </label>
           <input name="cover" type = "file" id="gCover" class="form-control" (change)="imgChange($event)"/>
         </div>

@@ -41,6 +41,8 @@ export class BookListComponent implements OnInit {
 
   selectedRating:number = 0;
 
+  bookRating:number = 0;
+
   review:Review = {
     id:0,
     rating:1,
@@ -93,6 +95,13 @@ export class BookListComponent implements OnInit {
 
     this.cover = "http://localhost:8000/" + this.showBook.cover;
     //console.log(this.cover);
+
+    let urlr = "http://localhost:8000/book_rating/" + id + "/";
+
+    this.http.get(urlr).subscribe(
+      (res:number)=>{this.bookRating=res;},
+      err=>{alert("Something went wrong"); console.log(err.message);}
+    )
   }
 
   hideBook():void{
@@ -100,6 +109,8 @@ export class BookListComponent implements OnInit {
   }
 
   editBook(id):void{
+    localStorage.setItem('bookId', id);
+    location.href = './book/add';
 
   }
 

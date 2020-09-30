@@ -15,3 +15,9 @@
   <br/>
   <app-book-lend></app-book-lend>
 </div>
+
+<div class="container" *ngIf="_route.url.includes('lent')">
+  <app-user-nav></app-user-nav>
+  <br/>
+  <app-lent-books></app-lent-books>
+</div>

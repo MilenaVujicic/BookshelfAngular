@@ -32,6 +32,7 @@ export class LoginPageComponent implements OnInit {
       this.http.post("http://localhost:8000/user/login/", body).subscribe(
         (res:AppUser)=> {
           localStorage.setItem('username', res.username);
+          localStorage.setItem('userId', res.id.toString());
           location.href = "./user"
         },
         err=>{
