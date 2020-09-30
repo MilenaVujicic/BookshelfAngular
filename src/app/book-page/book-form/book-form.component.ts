@@ -41,6 +41,8 @@ export class BookFormComponent implements OnInit {
   finishedPublisher = false;
   finishedAuthor = false;
 
+  changed:boolean = false;
+
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
@@ -122,6 +124,9 @@ export class BookFormComponent implements OnInit {
         err=>{alert("Something went wrong"); console.log(err.message);}
       )
     }else {
+      if(!this.changed)
+        this.book.cover = '';
+
       this.http.put(url, this.book).subscribe(
         (res:Book)=>{
           let urla = "http://localhost:8000/book_author/" + res.id + "/";
@@ -146,9 +151,11 @@ export class BookFormComponent implements OnInit {
   imgChange(event):void{
     if(event.target.files && event.target.files[0]) {
       var reader = new FileReader();
+
       reader.readAsDataURL(event.target.files[0]);
 
       reader.onload = (event)=>{
+        this.changed = true;
         this.book.cover = event.target.result;
       }
     }
