@@ -41,6 +41,8 @@ export class BookListComponent implements OnInit {
 
   selectedRating:number = 0;
 
+  bookRating:number = 0;
+
   review:Review = {
     id:0,
     rating:1,
@@ -56,10 +58,7 @@ export class BookListComponent implements OnInit {
   constructor(private http: HttpClient, public _route:Router) { }
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/books/" + u + '/';
 
     this.http.get(url).subscribe(
@@ -84,10 +83,7 @@ export class BookListComponent implements OnInit {
       err=>{console.log(err.message);}
     )
 
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let urlp = "http://localhost:8000/publisher/" + this.showBook.publisher + "/" + u + "/";
     this.http.get(urlp).subscribe(
       (res:Publisher)=>{this.publisher = res;},
@@ -99,6 +95,13 @@ export class BookListComponent implements OnInit {
 
     this.cover = "http://localhost:8000/" + this.showBook.cover;
     //console.log(this.cover);
+
+    let urlr = "http://localhost:8000/book_rating/" + id + "/";
+
+    this.http.get(urlr).subscribe(
+      (res:number)=>{this.bookRating=res;},
+      err=>{alert("Something went wrong"); console.log(err.message);}
+    )
   }
 
   hideBook():void{
@@ -106,6 +109,8 @@ export class BookListComponent implements OnInit {
   }
 
   editBook(id):void{
+    localStorage.setItem('bookId', id);
+    location.href = './book/add';
 
   }
 
@@ -128,10 +133,7 @@ export class BookListComponent implements OnInit {
     this.review.rating = this.selectedRating;
     console.log(this.review);
     console.log(this.selectedRating);
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/review/" + u + "/" + this.reviewingId + "/";
 
     this.http.post(url, this.review).subscribe(
@@ -143,10 +145,7 @@ export class BookListComponent implements OnInit {
   showReviews(id):void{
 
     this.showReview=true;
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/review/" + u + "/" + id;
     this.http.get(url).subscribe(
       (res:Review[])=>{this.reviews = res;

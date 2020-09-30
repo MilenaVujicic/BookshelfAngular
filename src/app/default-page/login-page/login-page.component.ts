@@ -28,14 +28,11 @@ export class LoginPageComponent implements OnInit {
   sendUser():void{
       let username = this.appUser.username;
       let password = this.appUser.password;
-      this.http.post("http://localhost:8000/user/login/", {username, password}).subscribe(
-        (res:string)=> {
-          console.log(res);
-          let token = JSON.stringify(res);
-          const helper = new JwtHelperService();
-          const decoded = helper.decodeToken(token);
-          console.log(decoded);
-          localStorage.setItem('jwt', token);
+      let body = JSON.stringify({username, password});
+      this.http.post("http://localhost:8000/user/login/", body).subscribe(
+        (res:AppUser)=> {
+          localStorage.setItem('username', res.username);
+          localStorage.setItem('userId', res.id.toString());
           location.href = "./user"
         },
         err=>{

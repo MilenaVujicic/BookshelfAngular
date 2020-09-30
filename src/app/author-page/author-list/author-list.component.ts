@@ -15,10 +15,7 @@ export class AuthorListComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/author/" + u + "/";
     this.http.get(url).subscribe(
       (res:Author[])=>{console.log("Success"); this.authors=res;},
@@ -32,10 +29,7 @@ export class AuthorListComponent implements OnInit {
   }
 
   deleteAuthor(id):void{
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/author/" + id + "/" + u + "/";
     console.log(url);
     this.http.delete(url).subscribe(

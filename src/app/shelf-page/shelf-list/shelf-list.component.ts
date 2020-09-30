@@ -42,10 +42,7 @@ export class ShelfListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/shelf/" + u + "/";
     this.http.get(url).subscribe(
       (res:Shelf[])=>{this.shelves = res;},
@@ -55,10 +52,7 @@ export class ShelfListComponent implements OnInit {
 
   showBooks(id):void{
     this.showing = true;
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/shelf_book/" + u + "/" + id + "/";
     this.http.get(url).subscribe(
       (res:Book[])=>{this.books = res;},
@@ -73,10 +67,7 @@ export class ShelfListComponent implements OnInit {
   }
 
   deleteShelf(id):void{
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/shelf/" + id + "/" + u + "/";
     this.http.delete(url).subscribe(
       res=>{alert("Shelf deleted"); location.reload();},
@@ -101,10 +92,7 @@ export class ShelfListComponent implements OnInit {
       err=>{console.log(err.message);}
     )
 
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let urlp = "http://localhost:8000/publisher/" + this.showBook.publisher + "/" + u + "/";
     this.http.get(urlp).subscribe(
       (res:Publisher)=>{this.publisher = res;},

@@ -15,10 +15,7 @@ export class PublisherListComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/publisher/" + u + "/";
     this.http.get(url).subscribe(
       (res:Publisher[])=>{this.publishers = res;},
@@ -32,10 +29,7 @@ export class PublisherListComponent implements OnInit {
   }
 
   deletePublisher(id):void{
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
     let url = "http://localhost:8000/publisher/" + id + "/" + u + "/";
     this.http.delete(url).subscribe(
       res=>{alert("Publisher deleted"); location.reload();},

@@ -67,6 +67,10 @@ const routes: Routes = [
   {
     path:'book/all',
     component:BookPageComponent
+  },
+  {
+    path:'book/lent',
+    component:BookPageComponent
   }
 ];
 

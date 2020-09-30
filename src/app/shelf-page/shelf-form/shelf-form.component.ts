@@ -21,10 +21,8 @@ export class ShelfFormComponent implements OnInit {
 
   ngOnInit(): void {
     let shelfID = localStorage.getItem("shelfID");
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
+
     if(shelfID != null){
       let url = "http://localhost:8000/shelf/" + shelfID + "/" + u + "/";
       this.http.get(url).subscribe(
@@ -39,10 +37,7 @@ export class ShelfFormComponent implements OnInit {
 
   sendShelf(){
     let shelfID = localStorage.getItem("shelfID");
-    let jwt = localStorage.getItem('jwt');
-    const helper = new JwtHelperService();
-    const decoded = helper.decodeToken(jwt);
-    let u = decoded['username'].toString();
+    let u = localStorage.getItem('username');
 
     if(shelfID != null){
       let url = "http://localhost:8000/shelf/" + shelfID + "/" + u + "/";
